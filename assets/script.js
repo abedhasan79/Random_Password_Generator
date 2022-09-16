@@ -1,5 +1,5 @@
 // Assignment Code
-let criteria = "Password Criteria:" + "\n" + "1. Password mush be between 8 to 128 characters long." + "\n" +
+let criteria = "Password Criteria:" + "\n" + "1. Password must be between 8 to 128 characters long." + "\n" +
   "2. Password should include lowercase, uppercase, number and/or special characters.";
 
 let lengthCriteria = "Choose a length of at least 8 to 128 characters";
@@ -34,43 +34,55 @@ function generatePassword() {
     } else {
 
       let finalCharacter = ""; // empty string to store all the character type a user wants.
+      let characterTypeArray = [];
 
       //if user wants lowercase character in their passward add lower case characters to the string finalCharacters
       if (window.confirm("Do you want to include lowercase character")) {
         finalCharacter += lowercase;
+        characterTypeArray.push("lowercase letters");
       }
 
       //if user wants uppercase character in their passward add uppercase characters to the string finalCharacters
       if (window.confirm("Do you want to include uppercase character")) {
         finalCharacter += uppercase;
+        characterTypeArray.push("uppercase letters");
       }
 
       //if user wants numeric characters in their passward add numeric characters to the string finalCharacters
       if (window.confirm("Do you want to include numeric character")) {
         finalCharacter += numeric;
+        characterTypeArray.push("numeric value");
       }
 
       //if user wants special characters in their passward add special characters to the string finalCharacters
       if (window.confirm("Do you want to include special character")) {
         finalCharacter += specialCharacters;
+        characterTypeArray.push("special characters");
       }
       // console.log(finalCharacter);
       //user must choose one character type
       if (finalCharacter === "") {
         alert("must choose either uppercase or lowercase or numeric or special character");
-        generatePassword();
+        alert("Try again. Click Generate Password to generate a random passward.");
+        location.reload();
       } else {
-        let randomPassword = "";
-        //creats a random passward based on the users choie of character types that got added in the string finalCharacter
-        for (let i = 0; i < length; i++) {
-          randomPassword = randomPassword + finalCharacter.charAt(Math.floor(Math.random() * finalCharacter.length));
+        for (let i = 0; i < characterTypeArray.length; i++) {
+          characterTypeArray[i] += "  ";
         }
-        //alerts the passward in a alert box
-        // alert("Your password is: "+randomPassword);
-        return randomPassword;
+        if (window.confirm("Character Type choices: " + characterTypeArray + ". Do you want to continue?")) {
+          let randomPassword = "";
+          //creats a random passward based on the users choie of character types that got added in the string finalCharacter
+          for (let i = 0; i < length; i++) {
+            randomPassword = randomPassword + finalCharacter.charAt(Math.floor(Math.random() * finalCharacter.length));
+          }
+          return randomPassword;
+        } else {
+          alert("Try again. Click Generate Password to generate a random passward.");
+          location.reload();
+        }
       }
     }
-  }else{
+  } else {
     alert("Must enter a numeric value between 8 to 128.");
     alert("Try again. Click Generate Password to generate a random passward.");
     location.reload();
