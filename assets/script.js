@@ -66,9 +66,11 @@ function generatePassword() {
         alert("Try again. Click Generate Password to generate a random passward.");
         location.reload();
       } else {
+
         for (let i = 0; i < characterTypeArray.length; i++) {
           characterTypeArray[i] += "  ";
-        }
+        } //creats a array of user input about character types to let them know if thats what they wanted.
+        
         if (window.confirm("Character Type choices: " + characterTypeArray + ". Do you want to continue?")) {
           let randomPassword = "";
           //creats a random passward based on the users choie of character types that got added in the string finalCharacter
