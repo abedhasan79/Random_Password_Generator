@@ -1,5 +1,7 @@
 # UofT-Bootcamp-Challenge-03
 
+# Random_Password_Generator
+
 # Description
 
 This is a website that will generate a random passward based on user choices from some prommpts. This assignment was done based on the following instructions:
