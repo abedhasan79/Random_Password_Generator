@@ -25,12 +25,14 @@ function generatePassword() {
   alert(criteria); //alerts the passward criteria
 
   let length = prompt(lengthCriteria)
+
   if (onlyNumbers(length)) {
     //passward must be between 8 to  128 character.
-    if (length < 8 || length > 128) {
+    if (length < 8 || length > 128 || length==="") {
       alert("Password length has to be between 8 to 128 characters");
       alert("Try again. Click Generate Password to generate a random passward.");
-      location.reload();
+      // location.reload();
+      return generatePassword();
     } else {
 
       let finalCharacter = ""; // empty string to store all the character type a user wants.
@@ -64,7 +66,8 @@ function generatePassword() {
       if (finalCharacter === "") {
         alert("must choose either uppercase or lowercase or numeric or special character");
         alert("Try again. Click Generate Password to generate a random passward.");
-        location.reload();
+        // location.reload();
+        return generatePassword();
       } else {
 
         for (let i = 0; i < characterTypeArray.length; i++) {
@@ -80,14 +83,16 @@ function generatePassword() {
           return randomPassword;
         } else {
           alert("Try again. Click Generate Password to generate a random passward.");
-          location.reload();
+          // location.reload();
+          return generatePassword();
         }
       }
     }
   } else {
     alert("Must enter a numeric value between 8 to 128.");
     alert("Try again. Click Generate Password to generate a random passward.");
-    location.reload();
+    // location.reload();
+    return generatePassword();
   }
 }
 
